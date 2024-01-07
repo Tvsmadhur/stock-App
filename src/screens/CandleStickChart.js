@@ -26,9 +26,9 @@ function CandleStickChart({ticker,timePeriod}) {
   useEffect(()=>{
     if(data && Object?.keys(data)[1])
     {
-    const timeData=Object.keys(data)[1]
+    const timeData=Object?.keys(data)[1]
     console.log(data[timeData])
-    const formattedData = Object.keys(data[timeData]).map(date => {
+    const formattedData = Object.keys(data[timeData])?.map(date => {
       console.log(date,'date')
       return ({
     

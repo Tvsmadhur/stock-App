@@ -115,7 +115,7 @@ function SearchBar() {
                   <>
                     <li
                       className={
-                        index === data.length - 1 ? " m-2" : "border-b m-2"
+                        index === data?.length - 1 ? " m-2" : "border-b m-2"
                       }
                     >
                       <p className="text-white">{optionName["2. name"]}</p>

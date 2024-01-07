@@ -24,7 +24,7 @@ function Gainers({ gainers }) {
   console.log(gainers, "..gainers");
   return (
     <div class="flex card-container mt-5 mb-5">
-      {gainers.map((gainer, index) => {
+      {gainers?.map((gainer, index) => {
         return (
           <>
             <Card className="cursor-pointer" key={index} onClick={()=>{

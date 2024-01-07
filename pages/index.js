@@ -60,12 +60,12 @@ export default function Home() {
             <Tab label="Top Losers" />
           </Tabs>
         </Box>
-        {(value === 0 && typeof data!=="undefined" && data?.top_gainers.length>0) && (
+        {(value === 0 && typeof data!=="undefined" && data?.top_gainers?.length>0) && (
           <Gainers
             gainers={data.top_gainers}
              />
         )}
-        {(value === 1 && typeof data!=="undefined" && data?.top_losers.length>0)  && (
+        {(value === 1 && typeof data!=="undefined" && data?.top_losers?.length>0)  && (
           <Losers
             losers={data.top_losers}
           />
