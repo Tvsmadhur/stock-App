@@ -31,7 +31,7 @@ function Gainers({ gainers }) {
               router.push({
                 pathname:"/company",
                 query:{
-                 ticker:"ABLVW",
+                 ticker:gainer.ticker,
                  current_price:"10.92",
                  is_profit:true,
                  change_percentage:gainer.change_percentage

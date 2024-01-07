@@ -6,49 +6,51 @@ const ReactApexChart = dynamic(() => import('react-apexcharts'), { ssr: false })
 import { getPriceData } from "../../services/getPriceDataService";
 function CandleStickChart({ticker,timePeriod}) {
   const [stockData,setStockData]=useState()
-  //  const { data, error, isLoading } = useQuery(
-  //   ["getPriceData",timePeriod,ticker],
-  //  ()=>getPriceData(timePeriod,ticker),
-  //   {
-  //     staleTime: 60000, // Cache data for 60 seconds
-  //     enabled: !!ticker && !!timePeriod,
-  //     refetchOnWindowFocus: false,
-  //     onSuccess: (data) => {
-  //      getGraphDataSuccess(data)
-  //       // Dispatch Redux action to update state
-  //     },
-  //     onError: (error) => {
-  //       getGraphDataFailure(error);
-  //     },
-  //   }
-  // );
-  // if (error) {
-  //   return <p>Please reoload the page API failed...</p>;
-  // }
-  // if (isLoading) {
-  //   return <p>Loading...</p>;
-  // }
-  // useEffect(()=>{
-  //   if(data && Object?.keys(data)[1])
-  //   {
-  //   const timeData=Object.keys(data)[1]
-  //   console.log(data[timeData])
-  //   const formattedData = Object.keys(data[timeData]).map(date => {
-  //     console.log(date,'date')
-  //     return ({
+   const { data, error, isLoading } = useQuery(
+    ["getPriceData",timePeriod,ticker],
+   ()=>getPriceData(timePeriod,ticker),
+    {
+      staleTime: 60000, // Cache data for 60 seconds
+      enabled: !!ticker && !!timePeriod,
+      refetchOnWindowFocus: false,
+      onSuccess: (data) => {
+       getGraphDataSuccess(data)
+        // Dispatch Redux action to update state
+      },
+      onError: (error) => {
+        getGraphDataFailure(error);
+      },
+    }
+  );
+ 
+  useEffect(()=>{
+    if(data && Object?.keys(data)[1])
+    {
+    const timeData=Object.keys(data)[1]
+    console.log(data[timeData])
+    const formattedData = Object.keys(data[timeData]).map(date => {
+      console.log(date,'date')
+      return ({
     
-  //     x: new Date(date),
-  //     y: [
-  //       parseFloat(data[timeData][date]['1. open']),
-  //       parseFloat(data[timeData][date]['2. high']),
-  //       parseFloat(data[timeData][date]['3. low']),
-  //       parseFloat(data[timeData][date]['4. close']),
-  //     ],
-  //   })});
-  //   console.log(formattedData)
-  //   setStockData(formattedData);
-  // }
-  // },[data])
+      x: new Date(date),
+      y: [
+        parseFloat(data[timeData][date]['1. open']),
+        parseFloat(data[timeData][date]['2. high']),
+        parseFloat(data[timeData][date]['3. low']),
+        parseFloat(data[timeData][date]['4. close']),
+      ],
+    })});
+    console.log(formattedData)
+    setStockData(formattedData);
+  }
+  },[data])
+
+  if (error) {
+    return <p>Please reoload the page API failed...</p>;
+  }
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
   const options = {
     chart: {
       id: 'responsive-chart',
@@ -104,14 +106,14 @@ function CandleStickChart({ticker,timePeriod}) {
   ];
   return (
     <div className="border p-8">
-    {/* {(typeof data!=="undefined" &&stockData?.length>0 && Object.keys(data)[1])&&
+    {(typeof data!=="undefined" &&stockData?.length>0 && Object.keys(data)[1])&&
      <ReactApexChart
       options={options}
       series={series}
       type="line"
       height={400}
      />
-    } */}
+    }
     </div>
   );
 }

@@ -10,7 +10,7 @@ function SearchBar() {
   const [togglePopUp, setTogglePopUp] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const value=useDebounce(searchValue,1000)
-  console.log(value,'value')
+  
    const { data, error, isLoading } = useQuery(
     ["getStockInfo",value],
     ()=>getStockMatches(value),

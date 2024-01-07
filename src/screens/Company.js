@@ -18,27 +18,27 @@ function Company() {
   const router = useRouter();
   const { ticker, current_price, is_profit, change_percentage } = router.query;
   const [timePeriod, setTimePeriod] = useState("TIME_SERIES_DAILY");
-  // const { data, error, isLoading } = useQuery(
-  //   ["getCompanyInfo",ticker],
-  //   ()=> getCompanyInfo(ticker),
-  //   {
-  //     enabled: !!ticker,
-  //     staleTime: 60000, // Cache data for 60 seconds
-  //     onSuccess: (data) => {
-  //      getCompanyDataSucces(data);
-  //       // Dispatch Redux action to update state
-  //     },
-  //     onError: (error) => {
-  //       getCompanyDataFailure(error);
-  //     },
-  //   }
-  // );
-  // if (error) {
-  //   return <p>Please reoload the page API failed...</p>;
-  // }
-  // if (isLoading) {
-  //   return <p>Loading...</p>;
-  // }
+  const { data, error, isLoading } = useQuery(
+    ["getCompanyInfo",ticker],
+    ()=> getCompanyInfo(ticker),
+    {
+      enabled: !!ticker,
+      staleTime: 60000, // Cache data for 60 seconds
+      onSuccess: (data) => {
+       getCompanyDataSucces(data);
+        // Dispatch Redux action to update state
+      },
+      onError: (error) => {
+        getCompanyDataFailure(error);
+      },
+    }
+  );
+  if (error) {
+    return <p>Please reoload the page API failed...</p>;
+  }
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
   const changeHandler = (event) => {
     switch (event.target.value) {
       case "1D":
@@ -55,56 +55,7 @@ function Company() {
         break;
     }
   };
-  const data = {
-    Symbol: "ABLVW",
-    AssetType: "Common Stock",
-    Name: "Able View Global Inc. Warrant",
-    Description:
-      "Able View Inc. provides brand management services. The company is headquartered in Hong Kong.",
-    CIK: "1957489",
-    Exchange: "NASDAQ",
-    Currency: "USD",
-    Country: "USA",
-    Sector: "TECHNOLOGY",
-    Industry: "GENERAL",
-    Address: "NONE",
-    FiscalYearEnd: "December",
-    LatestQuarter: "None",
-    MarketCapitalization: "None",
-    EBITDA: "None",
-    PERatio: "None",
-    PEGRatio: "None",
-    BookValue: "None",
-    DividendPerShare: "None",
-    DividendYield: "None",
-    EPS: "None",
-    RevenuePerShareTTM: "0",
-    ProfitMargin: "0",
-    OperatingMarginTTM: "0",
-    ReturnOnAssetsTTM: "0",
-    ReturnOnEquityTTM: "0",
-    RevenueTTM: "0",
-    GrossProfitTTM: "0",
-    DilutedEPSTTM: "0",
-    QuarterlyEarningsGrowthYOY: "0",
-    QuarterlyRevenueGrowthYOY: "0",
-    AnalystTargetPrice: "None",
-    TrailingPE: "-",
-    ForwardPE: "-",
-    PriceToSalesRatioTTM: "-",
-    PriceToBookRatio: "-",
-    EVToRevenue: "-",
-    EVToEBITDA: "-",
-    Beta: "None",
-    "52WeekHigh": "11.4",
-    "52WeekLow": "4.83",
-    "50DayMovingAverage": "9.96",
-    "200DayMovingAverage": "10.36",
-    SharesOutstanding: "0",
-    DividendDate: "None",
-    ExDividendDate: "None",
-  };
-  console.log(is_profit, typeof is_profit, "profilt");
+ 
   return (
     <div className="mt-5 flex items-center justify-center mb-5">
       <div className="flex flex-col w-[80%]">

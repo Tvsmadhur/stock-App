@@ -16,7 +16,7 @@ function Losers({ losers }) {
                   router.push({
                     pathname: "/company",
                     query: {
-                      ticker: "ABLVW",
+                      ticker: loser.ticker,
                       current_price:"10.92",
                       is_profit:false,
                       change_percentage:loser.change_percentage
