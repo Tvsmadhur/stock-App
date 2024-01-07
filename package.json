@@ -9,12 +9,26 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "14.0.4",
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.15.3",
+    "apexcharts": "^3.45.1",
+    "next": "^12.3.4",
+    "rc-slider": "^9.7.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-apexcharts": "^1.4.1",
+    "react-dom": "18.2.0",
+    "react-query": "^3.39.3",
+    "react-query-devtools": "^2.6.3",
+    "react-redux": "^9.0.4",
+    "redux": "^5.0.1",
+    "redux-persist": "^6.0.0"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.16",
     "eslint": "8.56.0",
-    "eslint-config-next": "14.0.4"
+    "eslint-config-next": "14.0.4",
+    "postcss": "^8.4.33",
+    "tailwindcss": "^3.4.0"
   }
 }
