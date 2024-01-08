@@ -98,6 +98,7 @@ function Company() {
           <FormControl>
             <RadioGroup
               onChange={changeHandler}
+              defaultValue="1D"
               row
               aria-labelledby="demo-row-radio-buttons-group-label"
               name="row-radio-buttons-group"
